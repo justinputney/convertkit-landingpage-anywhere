@@ -24,7 +24,7 @@ function get_resource($url) {
 		$body = $response;
 		$html = str_get_html($body);
 		foreach($html->find('a, link') as $element) {
-		  if(isset($element->href)) {
+		  if(isset($element->href) && $element->href[0] != "#") {
 			$element->href = url_to_absolute($url, $element->href);
 		  }
 		}
